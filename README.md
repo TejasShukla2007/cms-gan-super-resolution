@@ -3,6 +3,12 @@ Using Generative Adversarial Networks (GANs) for super-resolution tasks on the C
 
 Dataset : https://cernbox.cern.ch/s/EYgmOkI9BjwxNqy
 
+The weights for the model trained can be found in [./weights](./weights) . 
+
+[generator.weights.h5](./weights/generator.weights.h5) contains the weights of the generator immediately after GAN training.
+
+[phy_generator.weights.h5](./weights/phy_generator.weights.h5)  contains the final weights of the generator after incorporating the $l_{\text{energy}}$ loss.
+
 ## The Model
 A Generative Adversarial Network (GAN) model was trained on the CMS dataset for mapping lower resolution particle collision data to a higher resolution representation.
 
