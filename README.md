@@ -5,9 +5,9 @@ Dataset : https://cernbox.cern.ch/s/EYgmOkI9BjwxNqy
 
 The weights for the model trained can be found in [./weights](./weights) . 
 
-[generator.weights.h5](./weights/generator.weights.h5) contains the weights of the generator immediately after GAN training.
+[generator.weights.h5](./weights/generator.weights.h5) contains the weights of the generator from [cms-gan-sr.ipynb](./cms-gan-sr.ipynb).
 
-[phy_generator.weights.h5](./weights/phy_generator.weights.h5)  contains the final weights of the generator after incorporating the $l_{\text{energy}}$ loss.
+[phy_generator.weights.h5](./weights/phy_generator.weights.h5)  contains the final weights of the generator from [cms-phy-gan-sr.ipynb](./cms-phy-gan-sr.ipynb) after incorporating the $l_{\text{energy}}$ loss.
 
 ## The Model
 A Generative Adversarial Network (GAN) model was trained on the CMS dataset for mapping lower resolution particle collision data to a higher resolution representation.
@@ -30,10 +30,16 @@ The SR predicted cell energies perform well on super-resolution metrics with ave
 
 The predictions are shown below along with the corresponding LR data and target HR data: 
 
-Results in this project also indicate that performance of this model can be further improved by incorporating the $l_{\text{energy}}$ loss, defined in this project, during the GAN training loop.
-
 <img width="1479" height="511" alt="image" src="https://github.com/user-attachments/assets/56af9642-0f8b-4157-b373-4a96ca0b9957" />
 <img width="1588" height="552" alt="image" src="https://github.com/user-attachments/assets/7ba539e3-f5c8-4e18-99a0-de17f4bfceb2" />
+
+Results in [cms-gan-sr.ipynb](./cms-gan-sr.ipynb) also indicate that the performance of this model can be further improved by incorporating the $l_{\text{energy}}$ loss, defined in this project, during the GAN training loop. This idea was tested in [cms-phy-gan-sr.ipynb](./cms-phy-gan-sr.ipynb) and the following results were obtained. 
+
+<img width="1789" height="489" alt="image" src="https://github.com/user-attachments/assets/c00c4e30-c7f8-40ae-b634-4ca6879c6100" />
+<img width="1479" height="511" alt="image" src="https://github.com/user-attachments/assets/07949ee7-ccd2-4eff-87bd-9af6fc44014b" />
+<img width="1479" height="511" alt="image" src="https://github.com/user-attachments/assets/364d3ebe-2acc-4b48-a478-ec96c506a4d8" />
+
+Adding the $l_{\text{energy}}$ loss in the GAN training loop provided much better results. The peak of the SR event-level relative energy residuals distribution has shifted more towards the left and has come much closer to the LR event-level relative energy residuals distribution, indicating that the model has improved. Moreover, the model still perorms well on the super-resolution metrics with average **PSNR** = 43.56 and average **SSIM** = 0.988.
 
 
 
